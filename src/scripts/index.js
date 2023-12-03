@@ -1,22 +1,30 @@
 import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
-import '../styles/responsive.css';
+import swRegister from './utils/sw-register';
+import App from './views/app';
 
-
-const drawer = document.querySelector('#drawer');
-const menu = document.querySelector('#menu');
-const hero = document.querySelector('.hero');
-const main = document.querySelector('main');
-
-menu.addEventListener('click', function (event){
-    drawer.classList.toggle('open');
-    event.stopPropagation();
+const app = new App({
+  menuHamburger: document.querySelector('#hamburger'),
+  navList: document.querySelector('.nav-list'),
+  mainElement: document.querySelector('.nav-list'),
+  content: document.querySelector('#restaurant-content'),
 });
 
-hero.addEventListener('click', function (){
-    drawer.classList.remove('open');
-})
+const skipLink = document.querySelector('.skip-link');
+const mainContent = document.querySelector('#maincontent');
 
-main.addEventListener('click', function (){
-    drawer.classList.remove('open');
-})
+// tutorial dari reviewer
+skipLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  mainContent.scrollIntoView({ behavior: 'smooth' });
+  skipLink.blur();
+});
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
+  swRegister();
+});
