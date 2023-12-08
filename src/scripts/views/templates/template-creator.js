@@ -3,6 +3,7 @@ import CONFIG from '../../globals/config';
 const createRestaurantItemTemplate = (restaurant) => `
   <article class="post">
   <img tabindex="0" class="post-img"
+      crossorigin="anonymous"
       src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}"
       alt="Gambar Restoran ${restaurant.name}">
   <div class="post-content">
@@ -16,7 +17,7 @@ const createRestaurantItemTemplate = (restaurant) => `
 
 const createRestaurantDetailTemplate = (restaurants) => `
   <h2 class="movie__title">${restaurants.name}</h2>
-  <img class="movie__poster" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" />
+  <img class="movie__poster" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL + restaurants.pictureId}" alt="${restaurants.name}" />
   <div class="movie__info">
     <h3>Information</h3>
     <h4>Address</h4>

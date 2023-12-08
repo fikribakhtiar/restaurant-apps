@@ -15,6 +15,7 @@ const Home = {
           restaurants += `
         <article class="post">
           <img tabindex="0" class="post-img"
+               crossorigin="anonymous"
                src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}"
                alt="Gambar Restoran ${restaurant.name}">
           <div class="post-content">

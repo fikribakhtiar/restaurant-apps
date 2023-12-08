@@ -52,7 +52,7 @@ const Detail = {
         // Menampilkan elemen detail-item
         restaurantDetailContainer.innerHTML = `
                 <h1 class="restaurant-name">${restaurant.name}</h2>
-                <img class="restaurant-image" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
+                <img class="restaurant-image" crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
                 <div class="restaurant-info">
                   <h2>Detail Restaurant</h2>
                   <h4>Address</h4>
@@ -103,7 +103,7 @@ const Detail = {
 
       if (restaurant) {
         likeButtonContainer.innerHTML = `
-                <button aria-label="like this movie" id="likeButton" class="like">
+                <button aria-label="like this restaurant" id="likeButton" class="like">
                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                 </button>
             `;
