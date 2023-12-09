@@ -6,7 +6,7 @@
 /** @type {import('jest').Config} */
 const config = {
   testMatch: [
-    '**/tests/**/*.test.[jt]s?(x)',
+    '**/specs/**/*Specs.[jt]s?(x)',
   ],
 
   /* The paths to modules that run some code to configure or set up

@@ -1,7 +1,10 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -36,6 +39,29 @@ module.exports = {
         to: path.resolve(__dirname, 'dist/'),
       }],
     }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-database',
+          },
+        },
+      ],
+    }),
+    new ImageminWebpWebpackPlugin({
+      config: [{
+        from: path.resolve(__dirname, 'src/public/images'),
+        test: /\.(jpe?g|png)/,
+        options: {
+          quality: 50,
+        },
+      }],
+      overrideExtension: true,
+    }),
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
