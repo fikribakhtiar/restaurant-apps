@@ -2,6 +2,8 @@ import 'regenerator-runtime'; /* for async await transpile */
 import '../styles/main.css';
 import swRegister from './utils/sw-register';
 import App from './views/app';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App({
   menuHamburger: document.querySelector('#hamburger'),

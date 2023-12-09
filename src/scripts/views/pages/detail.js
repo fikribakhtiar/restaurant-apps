@@ -1,4 +1,5 @@
 import CONFIG from '../../globals/config';
+import favoriteRestaurant from '../../data/favorite-restaurant';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
@@ -112,6 +113,7 @@ const Detail = {
       }
       LikeButtonInitiator.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
+        favoriteRestaurant,
         restaurant: {
           id: restaurant.id,
           name: restaurant.name,

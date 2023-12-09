@@ -14,7 +14,7 @@ const Home = {
         data.restaurants.forEach((restaurant) => {
           restaurants += `
         <article class="post">
-          <img tabindex="0" class="post-img"
+          <img tabindex="0" class="post-img lazyload"
                crossorigin="anonymous"
                src="https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}"
                alt="Gambar Restoran ${restaurant.name}">
